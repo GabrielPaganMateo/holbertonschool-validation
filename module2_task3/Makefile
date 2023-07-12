@@ -30,6 +30,14 @@ clean: ## sa;lkdjf dsasadlkjfsad f;lj hdsaflja'skjd flkas
 	-make stop
 	-rm -f ./awesome-api ./awesome-api.log coverage*
 
+.PHONY: unit-tests
+unit-tests: ## UNIT TEST UNIT TEST
+	go test -v -short -coverprofile=coverage-units.out
+
+.PHONY: integration-tests 
+integration-tests: ## " - integration-tests: Runs the Golang integration tests"
+	go test -v -short -coverprofile=coverage-integrations.out
+
 .PHONY: test
 test: unit-tests integration-tests ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
@@ -38,12 +46,4 @@ test: unit-tests integration-tests ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasg
 .PHONY: lint
 lint: ## LINT LINT LINT YEAHHHH BABYYYY
 	golangci-lint run
-
-.PHONY: unit-tests
-unit-tests: ## UNIT TEST UNIT TEST
-	go test -v -short -coverprofile=coverage-units.out
-
-.PHONY: integration-tests 
-integration-tests: ## " - integration-tests: Runs the Golang integration tests"
-	go test -v -coverprofile=coverage-integrations.out
 
