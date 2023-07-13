@@ -2,9 +2,10 @@
 
 check: ## “Check” should fail when one of the 2 following steps fails: Lint of the Markdown source files using the command line “markdownlint-cli”v0.26.0, Analysis of the links with the command line “markdown-link-check”v3.8.6
 	markdownlint content/posts/*.md
-	python3 opt/W3C-Validator/w3c_validator.py dist/index.html
+	markdown-link-check content/posts/*.md
 
-validate:
+validate: ## Validate the file ./dist/index.html with W3C validator
+	python3 opt/W3C-Validator/w3c_validator.py dist/index.html
 
 build: check ## Generate the website from the markdown and configuration files in the directory dist/
 	hugo
