@@ -32,11 +32,11 @@ clean: ## sa;lkdjf dsasadlkjfsad f;lj hdsaflja'skjd flkas
 
 .PHONY: unit-tests
 unit-tests: ## UNIT TEST UNIT TEST
-	go test -v -short -coverprofile=coverage-units.out
+	go test -v -short -tags=unit -coverprofile=coverage-units.out
 
 .PHONY: integration-tests 
 integration-tests: ## " - integration-tests: Runs the Golang integration tests"
-	go test -v -short -coverprofile=coverage-integrations.out
+	go test -v -tags=integration -coverprofile=coverage-integrations.out
 
 .PHONY: test
 test: unit-tests integration-tests ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
