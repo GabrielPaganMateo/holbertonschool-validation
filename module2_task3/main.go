@@ -55,7 +55,7 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
   switch len(nameParams) {
 	case 0:
 		// Set the name variable to an empty string when there is no parameter "name" in the request
-		name = ""
+		name = "there"
 	case 1:
 		// Set the name variable to the unique parameter "name" in the request
 		name = nameParams[0]
@@ -64,11 +64,6 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 		name = nameParams[len(nameParams)-1]
   }
 
-
-	// Set a default value if the name is empty
-	if name == "" {
-		name = "there"
-	}
 
   // Return status 400 if name is empty
   if name == "" {
