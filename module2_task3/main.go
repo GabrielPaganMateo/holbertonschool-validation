@@ -55,19 +55,13 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
   switch len(nameParams) {
 	case 0:
 		// Set the name variable to an empty string when there is no parameter "name" in the request
-		name = "there"
-    w.WriteHeader(200)
-    _, _ = io.WriteString(w, fmt.Sprintf("Hello %s!", name))
-
-    // Print a line in the ACCESS log
-    fmt.Printf("HIT: hello handler with name %s \n", name)
-    return
+		name = ""
 	case 1:
 		// Set the name variable to the unique parameter "name" in the request
 		name = nameParams[0]
 	default:
 		// Set the name variable to the last occurence of the parameters "name" in the request
-		name = nameParams[0]
+		name = nameParams[len(nameParams)-1]
   }
 
 
@@ -78,11 +72,6 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 
   // Return status 400 if name is empty
   if name == "" {
-    w.WriteHeader(400)
-    return
-  }
-
-  if name == "there" {
     w.WriteHeader(400)
     return
   }
