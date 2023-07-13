@@ -39,9 +39,9 @@ integration-tests: ## " - integration-tests: Runs the Golang integration tests"
 	go test -v -coverprofile=coverage-integrations.out
 
 .PHONY: test
-test: unit-tests integration-tests ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
-
-
+test: ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
+		go test -v -short -coverprofile=coverage-units.out
+		go test -v -coverprofile=coverage-integrations.out
 
 .PHONY: lint
 lint: ## LINT LINT LINT YEAHHHH BABYYYY
