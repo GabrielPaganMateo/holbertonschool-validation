@@ -16,6 +16,8 @@ This project follows a simple development lifecycle with three main steps:
 1. **Build**: Generate the website from the markdown and configuration files in the `dist/` directory.
 2. **Clean**: Clean up the content of the `dist/` directory.
 3. **Post**: Create a new blog post using environment variables `POST_TITLE` and `POST_NAME`.
+4. **Check**: Lint markdown files and analyze links.
+5. **Validate**: Validate W3C style in html files.
 
 To perform these steps, the project uses a Makefile with the following targets:
 
@@ -43,6 +45,23 @@ To create a new blog post, set the `POST_NAME` and `POST_TITLE` environment vari
 make post
 
 This command will create a new blog post with the specified file name and title.
+
+### Check
+
+To lint the markdown files for style and analyze the links, run:
+
+make check
+
+This command will check, That there is no dead links in the markdown files (static analysis)
+That the Markdown is correctly written (static analysis)
+
+### Validate
+
+To validate the style in index.html files of '/dist' directory, run:
+
+make validate
+
+This command uses a W3C validator via the command: python3 opt/W3C-Validator/w3c_validator.py 
 
 ### Help
 
