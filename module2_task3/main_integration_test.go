@@ -54,7 +54,12 @@ func Test_server(t *testing.T) {
 		responseCode: 200,
 		body:         "Hello Holberton!",
 	  },
-	  
+	  {
+      name:         "Hello page with multiple name parameters",
+      URI:          "/hello?name=Go&name=Python&name=Java",
+      responseCode: 200,
+      body:         "Hello Java!",
+  },
   }
 
   for _, tt := range tests {

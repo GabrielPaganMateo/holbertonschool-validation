@@ -56,10 +56,10 @@ func Test_HelloHandler(t *testing.T) {
 		body:         "Hello José!",
 	  },
 	  {
-		name:         "Multiple name parameters, only first one considered",
+		name:         "Multiple name parameters, only last one considered",
 		queryString:  "name=John&name=Jane",
 		responseCode: 200,
-		body:         "Hello John!",
+		body:         "Hello Jane!",
 	  },
   }
   for _, tt := range tests {
