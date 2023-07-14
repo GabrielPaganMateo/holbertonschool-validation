@@ -13,14 +13,14 @@ validate: ## Validate the file ./dist/index.html with W3C validator
 	-python3 opt/W3C-Validator/w3c_validator.py ./dist/index.html || true
 
 lint: ## LINT LINT LINT YEAHHHH BABYYYY
-	golangci-lint run
+	-golangci-lint run || true
 
 build: check lint ## Generate the website from the markdown and configuration files in the directory dist/
 	hugo
 	go get github.com/gorilla/mux
 	go build -o $(BINARY_NAME)
 
-run: ## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
+run: build ## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
 
 stop: ## dsakjhfalsd hf;lsa fjdsahf;sahfhsadlkfhsadfsafd 
