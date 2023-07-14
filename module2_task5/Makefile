@@ -21,10 +21,10 @@ build: check lint ## Generate the website from the markdown and configuration fi
 	go build -o $(BINARY_NAME)
 
 unit-tests: ## UNIT TEST UNIT TEST
-	go test -v -short -coverprofile=coverage-unit.out
+	go test -v -short -coverprofile=coverage-units.out
 
 integration-tests: ## " - integration-tests: Runs the Golang integration tests"
-	go test -v -coverprofile=coverage-integration.out
+	go test -v -coverprofile=coverage-integrations.out
 
 test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
