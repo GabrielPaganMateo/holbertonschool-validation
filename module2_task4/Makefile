@@ -5,7 +5,7 @@ check: ## “Check” should fail when one of the 2 following steps fails: Lint 
 	markdown-link-check content/posts/*.md
 
 validate: ## Validate the file ./dist/index.html with W3C validator
-	-python3 opt/W3C-Validator/w3c_validator.py dist/index.html
+	-python3 opt/W3C-Validator/w3c_validator.py dist/index.html || SUCCESS
 
 build: check ## Generate the website from the markdown and configuration files in the directory dist/
 	hugo
