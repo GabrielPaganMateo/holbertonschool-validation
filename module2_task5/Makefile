@@ -16,10 +16,10 @@ lint: ## LINT LINT LINT YEAHHHH BABYYYY
 	golangci-lint run
 
 build: ## Generate the website from the markdown and configuration files in the directory dist/
+	hugo
 	go build -o awesome-api
 	go get github.com/gorilla/mux
 	./awesome-api > awesome-api.log 2>&1 & echo $$! > awesome-api.pid
-	hugo
 
 unit-tests: ## UNIT TEST UNIT TEST
 	go test -v -short -coverprofile=coverage-units.out
