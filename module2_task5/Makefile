@@ -50,7 +50,7 @@ unit-tests: ## UNIT TEST UNIT TEST
 integration-tests: ## " - integration-tests: Runs the Golang integration tests"
 	go test -v -coverprofile=coverage-integrations.out
 
-test: unit-tests integration-tests ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
+test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
 help: ## Prints out the list of targets and their usage
 	@awk 'BEGIN {FS = ":.*?# "} /^[a-zA-Z_-]+:.*?# / {printf "\033[36m%-10s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
