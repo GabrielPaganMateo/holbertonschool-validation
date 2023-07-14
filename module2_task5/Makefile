@@ -13,7 +13,7 @@ validate: ## Validate the file ./dist/index.html with W3C validator
 	-python3 opt/W3C-Validator/w3c_validator.py ./dist/index.html || true
 
 lint: ## LINT LINT LINT YEAHHHH BABYYYY
-	-golangci-lint run || true
+	golangci-lint run
 
 build: check lint ## Generate the website from the markdown and configuration files in the directory dist/
 	hugo
