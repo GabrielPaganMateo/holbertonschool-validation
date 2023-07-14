@@ -1,7 +1,7 @@
 package main
 
 import (
-  "io"
+  "io/ioutil"
   "net/http"
   "net/http/httptest"
   "testing"
@@ -19,7 +19,7 @@ func Test_server(t *testing.T) {
     body         string
   }{
     {
-      name:         "Home_page",
+      name:         "Home page",
       URI:          "",
       responseCode: 404,
       body:         "404 page not found\n",
@@ -81,7 +81,7 @@ func Test_server(t *testing.T) {
 
       // Check that the response body is what you expect.
       expectedBody := tt.body
-      bodyBytes, err := io.ReadAll(res.Body)
+      bodyBytes, err := ioutil.ReadAll(res.Body)
       res.Body.Close()
       if err != nil {
         t.Fatal(err)
