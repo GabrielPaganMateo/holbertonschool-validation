@@ -16,11 +16,11 @@ lint: ## LINT LINT LINT YEAHHHH BABYYYY
 	golangci-lint run
 
 go-build: lint
-	-go get github.com/gorilla/mux
-	-go build -o $(BINARY_NAME)
+	go get github.com/gorilla/mux
+	go build -o $(BINARY_NAME)
 
 hugo-build: check
-	-hugo
+	hugo
 
 build: hugo-build go-build ## Generate the website from the markdown and configuration files in the directory dist/
 
