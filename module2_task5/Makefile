@@ -16,10 +16,10 @@ lint: ## LINT LINT LINT YEAHHHH BABYYYY
 	golangci-lint run
 
 build: ## Generate the website from the markdown and configuration files in the directory dist/
-	hugo
 	go get github.com/gorilla/mux
 	go build -o $(BINARY_NAME)
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
+	hugo
 
 unit-tests: ## UNIT TEST UNIT TEST
 	go test -v -short -coverprofile=coverage-units.out
@@ -29,7 +29,7 @@ integration-tests: ## " - integration-tests: Runs the Golang integration tests"
 
 test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
-run: lint build test## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
+run: ## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
 
 stop: ## dsakjhfalsd hf;lsa fjdsahf;sahfhsadlkfhsadfsafd 
