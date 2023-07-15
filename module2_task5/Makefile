@@ -13,13 +13,13 @@ validate: ## Validate the file ./dist/index.html with W3C validator
 	-python3 opt/W3C-Validator/w3c_validator.py ./dist/index.html || true
 
 lint: ## LINT LINT LINT YEAHHHH BABYYYY
-	golangci-lint run
+	-golangci-lint run
+
+wow:
+	go build -o $(BINARY_NAME) && hugo
 
 build: ## Generate the website from the markdown and configuration files in the directory dist/
-	go get github.com/gorilla/mux
-	go build -o $(BINARY_NAME)
-	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
-	hugo
+	go build -o $(BINARY_NAME) && hugo
 
 unit-tests: ## UNIT TEST UNIT TEST
 	go test -v -short -coverprofile=coverage-units.out
@@ -27,7 +27,7 @@ unit-tests: ## UNIT TEST UNIT TEST
 integration-tests: ## " - integration-tests: Runs the Golang integration tests"
 	go test -v -coverprofile=coverage-integrations.out
 
-test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
+test: unit-tests integration-tests validate check ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
 run: ## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
