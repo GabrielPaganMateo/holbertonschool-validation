@@ -15,11 +15,11 @@ validate: ## Validate the file ./dist/index.html with W3C validator
 lint: ## LINT LINT LINT YEAHHHH BABYYYY
 	golangci-lint run
 
-build: ## Generate the website from the markdown and configuration files in the directory dist/
+build: check lint ## Generate the website from the markdown and configuration files in the directory dist/
 	hugo
-	go build -o awesome-api
-	./awesome-api > awesome-api.log 2>&1 & echo $$! > awesome-api.pid
 	go get github.com/gorilla/mux
+	go build -o $(BINARY_NAME)
+	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
 
 unit-tests: ## UNIT TEST UNIT TEST
 	go test -v -short -coverprofile=coverage-units.out
@@ -29,17 +29,18 @@ integration-tests: ## " - integration-tests: Runs the Golang integration tests"
 
 test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
-run: build test## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
+run: lint build test## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
 
 stop: ## dsakjhfalsd hf;lsa fjdsahf;sahfhsadlkfhsadfsafd 
-	@if [ -f awesome-api.pid ]; then kill `cat awesome-api.pid` && rm awesome-api.pid; fi
+	-kill `cat $(PID_FILE)` || true
+	-rm $(PID_FILE) || true
 
 
 clean: ## Cleanup the content of the directory dist/
 	-rm -rf dist/
 	-make stop
-	-rm -f ./awesome-api ./awesome-api.log ./awsome-api.pid coverage*
+	-rm -f ./awesome-api ./awesome-api.log coverage*
 
 post: ## Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME
 	@if [ -z "$(POST_NAME)" ]; then \
