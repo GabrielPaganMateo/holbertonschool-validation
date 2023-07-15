@@ -33,9 +33,7 @@ run: lint build test## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfd
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
 
 stop: ## dsakjhfalsd hf;lsa fjdsahf;sahfhsadlkfhsadfsafd 
-	-kill `cat $(PID_FILE)` || true
-	-rm $(PID_FILE) || true
-
+	@if [ -f $(PID_FILE) ]; then kill `cat $(PID_FILE)` && rm $(PID_FILE); fi
 
 clean: ## Cleanup the content of the directory dist/
 	-rm -rf dist/
