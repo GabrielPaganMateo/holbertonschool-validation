@@ -15,13 +15,12 @@ validate: ## Validate the file ./dist/index.html with W3C validator
 lint: ## LINT LINT LINT YEAHHHH BABYYYY
 	golangci-lint run
 
-go-build:
+go-build: lint
 	go get github.com/gorilla/mux
-	go build -o $(BINARY_NAME) 
+	go build -o $(BINARY_NAME)
 
 hugo-build: check
 	hugo
-	touch ./dist/awesome-api
 
 build: hugo-build go-build ## Generate the website from the markdown and configuration files in the directory dist/
 
