@@ -21,7 +21,7 @@ go-build:
 
 hugo-build: check
 	hugo
-	touch /dist/awesome-api
+	touch ./dist/awesome-api
 
 build: hugo-build go-build ## Generate the website from the markdown and configuration files in the directory dist/
 
