@@ -19,8 +19,8 @@ func Test_server(t *testing.T) {
     body         string
   }{
     {
-      name:         "Home page",
-      URI:          "",
+      name:         "Home_page",
+      URI:          "/Home_page",
       responseCode: 404,
       body:         "404 page not found\n",
     },
