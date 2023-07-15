@@ -18,7 +18,7 @@ lint: ## LINT LINT LINT YEAHHHH BABYYYY
 build: ## Generate the website from the markdown and configuration files in the directory dist/
 	hugo
 	go build -o awesome-api
-	./awesome-api > awesome-api.log 2>&1 & echo $$! > awesome-api.pid
+
 	go get github.com/gorilla/mux
 
 unit-tests: ## UNIT TEST UNIT TEST
@@ -33,13 +33,13 @@ run: build test## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
 
 stop: ## dsakjhfalsd hf;lsa fjdsahf;sahfhsadlkfhsadfsafd 
-	@if [ -f $(PID_FILE) ]; then kill `cat $(PID_FILE)` && rm $(PID_FILE); fi
+	@if [ -f awesome-api.pid ]; then kill `cat awesome-api.pid` && rm awesome-api.pid; fi
 
 
 clean: ## Cleanup the content of the directory dist/
 	-rm -rf dist/
 	-make stop
-	-rm -f ./awesome-api ./awesome-api.log coverage*
+	-rm -f ./awesome-api ./awesome-api.log ./awsome-api.pid coverage*
 
 post: ## Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME
 	@if [ -z "$(POST_NAME)" ]; then \
