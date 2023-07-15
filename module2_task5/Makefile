@@ -17,7 +17,6 @@ lint: ## LINT LINT LINT YEAHHHH BABYYYY
 
 build: ## Generate the website from the markdown and configuration files in the directory dist/
 	hugo
-	go get github.com/gorilla/mux
 	go build
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
 
