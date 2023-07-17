@@ -1,18 +1,20 @@
+---
 name: module3_task0
-
 on:
   push:
-    branches: [ master ] # replace 'master' with the name of your principal branch if it's not 'master'
+    branches:
+      - main
   schedule:
-    - cron: '0 0 * * *' # this means the action will run every day at midnight
+    - cron: '0 0 * * *'
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-22.04
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Validate Makefile
+        run: make help
+        working-directory: ./Repo's/holbertonschool-validation/module3_task0/
 
-    - name: Validate Makefile
-      run: make help
-      working-directory: .
