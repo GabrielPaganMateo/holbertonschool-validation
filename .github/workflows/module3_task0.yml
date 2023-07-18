@@ -15,8 +15,8 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Validate Makefile
-        run:
-            pwd 
-            make help
-
+        run: |
+            pwd
+            cd module3_task0
+            make help 
 
