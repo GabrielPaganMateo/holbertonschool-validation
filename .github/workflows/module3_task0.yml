@@ -13,10 +13,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
+
       - name: Validate Makefile
         run: |
-            pwd
             cd module3_task0
-            make help 
-
+            make help
+---
