@@ -16,5 +16,5 @@ jobs:
       
       - name: Validate Makefile
         run: make help
-        working-directory: ./holbertonschool-validation/module3_task0/
+        working-directory: /module3_task0
 
