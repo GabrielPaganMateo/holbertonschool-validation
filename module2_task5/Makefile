@@ -23,6 +23,7 @@ hugo-build: check
 	hugo
 
 build: hugo-build go-build ## Generate the website from the markdown and configuration files in the directory dist/
+	hugo
 
 unit-tests: ## UNIT TEST UNIT TEST
 	go test -v -short -coverprofile=coverage-units.out
@@ -34,6 +35,7 @@ test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf a
 
 run: lint check build test ## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
+	hugo server
 
 stop: ## dsakjhfalsd hf;lsa fjdsahf;sahfhsadlkfhsadfsafd 
 	@if [ -f $(PID_FILE) ]; then kill `cat $(PID_FILE)` && rm $(PID_FILE); fi
