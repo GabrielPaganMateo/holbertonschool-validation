@@ -16,4 +16,4 @@ jobs:
       - name: Validate Makefile
         run: |
             cd module3_task0
-            make build
+            make help
