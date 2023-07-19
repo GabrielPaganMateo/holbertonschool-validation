@@ -17,9 +17,24 @@ jobs:
       - name: Validate Makefile
         run: |
             cd module3_task1
-            ./setup.sh
             make help
-            make test
+      
+      - name: Setup Hugo
+        run:
+            ./setup.sh
+
+      - name: build
+        run:
             make build
+      
+      - name: test
+        run:
+            make test
+      
+      - name: run
+        run:
             make run
-            make stop
+      
+      - name: clean
+        run:
+            make clean
