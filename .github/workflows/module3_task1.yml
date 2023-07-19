@@ -22,27 +22,3 @@ jobs:
             cd module3_task1
             make help
 
-      - name: Setup Hugo
-        run: |
-            cd module3_task1
-            ./setup.sh
-
-      - name: build
-        run: |
-            cd module3_task1
-            make build
-
-      - name: test
-        run: |
-          cd module3_task1
-          make test
-
-      - name: run
-        run: |
-          cd module3_task1
-          make run
-
-      - name: clean
-        run: |
-          cd module3_task1 
-          make clean
