@@ -18,23 +18,18 @@ jobs:
         run: |
             cd module3_task1
             make help
-      
+
       - name: Setup Hugo
-        run:
-            ./setup.sh
+        run: ./setup.sh
 
       - name: build
-        run:
-            make build
+        run: make build
       
       - name: test
-        run:
-            make test
+        run: make test
       
       - name: run
-        run:
-            make run
+        run: make run
       
       - name: clean
-        run:
-            make clean
+        run: make clean
