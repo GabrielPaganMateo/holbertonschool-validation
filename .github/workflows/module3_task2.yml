@@ -39,12 +39,12 @@ jobs:
           cd module3_task2
           make run
 
-      - name: clean
-        run: |
-          cd module3_task2
-          make clean
-
       - name: package
         run: |
           cd module3_task2
           make package
+
+      - name: clean
+        run: |
+          cd module3_task2
+          make clean
