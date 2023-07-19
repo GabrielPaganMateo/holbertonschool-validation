@@ -24,12 +24,12 @@ jobs:
 
       - name: build
         run: make build
-      
+
       - name: test
         run: make test
-      
+
       - name: run
         run: make run
-      
+
       - name: clean
         run: make clean
