@@ -32,7 +32,8 @@ jobs:
       - name: test
         run: |
           cd module3_task2
-          make test
+          make unit-tests
+          make integration-tests
 
       - name: run
         run: |
@@ -49,7 +50,7 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Lint Markdown
+      - name: lint
         run: |
           cd module3_task2
           make lint
