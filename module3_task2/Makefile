@@ -16,8 +16,8 @@ lint_golang: ## LINT LINT LINT YEAHHHH BABYYYY
 	golangci-lint run
 
 lint: ## LINT MD
-    npm install -g markdownlint-cli
-    markdownlint *.md
+	npm install -g markdownlint-cli
+	markdownlint *.md
 
 go-build:
 	go get github.com/gorilla/mux
