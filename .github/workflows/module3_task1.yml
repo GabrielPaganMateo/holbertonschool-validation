@@ -22,3 +22,8 @@ jobs:
             cd module3_task1
             make help
 
+      - name: Setup Hugo
+        run: |
+            cd module3_task1
+            ./setup.sh
+
