@@ -32,7 +32,7 @@ integration-tests: ## " - integration-tests: Runs the Golang integration tests"
 
 test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
-run: lint check build test ## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
+run: ## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
 	./$(BINARY_NAME) > $(LOG_FILE) 2>&1 & echo $$! > $(PID_FILE)
 
 stop: ## dsakjhfalsd hf;lsa fjdsahf;sahfhsadlkfhsadfsafd 
