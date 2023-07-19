@@ -18,4 +18,8 @@ jobs:
         run: |
             cd module3_task1
             ./setup.sh
+            make help
+            make test
             make build
+            make run
+            make stop
