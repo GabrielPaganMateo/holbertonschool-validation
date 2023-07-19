@@ -44,6 +44,11 @@ jobs:
           cd module3_task2
           make package
 
+      - name: lint
+        run: |
+          cd module3_task2
+          make lint
+
       - name: clean
         run: |
           cd module3_task2
