@@ -44,7 +44,12 @@ jobs:
           cd module3_task2
           make package
 
-      - name: lint
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Lint Markdown
         run: |
           cd module3_task2
           make lint
