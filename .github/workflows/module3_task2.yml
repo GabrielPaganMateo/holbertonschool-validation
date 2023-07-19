@@ -1,0 +1,50 @@
+---
+name: module3_task2
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Validate Makefile
+        run: |
+            cd module3_task2
+            make help
+
+      - name: Setup Hugo
+        run: |
+            cd module3_task2
+            ./setup.sh
+
+      - name: build
+        run: |
+            cd module3_task2
+            make build
+
+      - name: test
+        run: |
+          cd module3_task2
+          make test
+
+      - name: run
+        run: |
+          cd module3_task2
+          make run
+
+      - name: clean
+        run: |
+          cd module3_task2
+          make clean
+
+      - name: package
+        run: |
+          cd module3_task2
+          make package
