@@ -57,7 +57,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          release_name: 1.0.0
+          tag_name: 1.0.0
           files: awesome-website.zip
           body: ${{ steps.DEPLOY.outputs.body }}
 
