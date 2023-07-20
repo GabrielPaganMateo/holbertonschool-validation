@@ -1,0 +1,64 @@
+---
+name: module3_task3
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * *'
+  tags:
+    - 1.0.0
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Validate Makefile
+        run: |
+            cd module3_task2
+            make help
+
+      - name: Setup Hugo
+        run: |
+            cd module3_task2
+            ./setup.sh
+
+      - name: build
+        run: |
+            cd module3_task2
+            make build
+
+      - name: test
+        run: |
+          cd module3_task2
+          make unit-tests
+          make integration-tests
+          make validate
+
+      - name: run
+        run: |
+          cd module3_task2
+          make run
+
+      - name: package
+        run: |
+          cd module3_task2
+          make package
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: lint
+        run: |
+          cd module3_task2
+          make lint
+
+      - name: clean
+        run: |
+          cd module3_task2
+          make clean
