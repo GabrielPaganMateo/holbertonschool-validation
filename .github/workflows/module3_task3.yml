@@ -18,34 +18,34 @@ jobs:
 
       - name: Validate Makefile
         run: |
-            cd module3_task2
+            cd module3_task3
             make help
 
       - name: Setup Hugo
         run: |
-            cd module3_task2
+            cd module3_task3
             ./setup.sh
 
       - name: build
         run: |
-            cd module3_task2
+            cd module3_task3
             make build
 
       - name: test
         run: |
-          cd module3_task2
+          cd module3_task3
           make unit-tests
           make integration-tests
           make validate
 
       - name: run
         run: |
-          cd module3_task2
+          cd module3_task3
           make run
 
       - name: package
         run: |
-          cd module3_task2
+          cd module3_task3
           make package
 
       - name: Read release notes
@@ -55,6 +55,7 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v1
+        run: cd module3_task3
         if: startsWith(github.ref, 'refs/tags/')
         with:
           tag_name: 1.0.0
@@ -68,10 +69,10 @@ jobs:
 
       - name: lint
         run: |
-          cd module3_task2
+          cd module3_task3
           make lint
 
       - name: clean
         run: |
-          cd module3_task2
+          cd module3_task3
           make clean
