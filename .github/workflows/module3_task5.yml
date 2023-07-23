@@ -1,6 +1,5 @@
 ---
-name: module3_task4
-on:
+name: module3_task45
   push:
     branches:
       - master
