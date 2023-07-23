@@ -1,0 +1,81 @@
+---
+name: module3_task4
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+  schedule:
+    - cron: '0 0 * * *'
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Validate Makefile
+        run: |
+            cd module3_task3
+            make help
+
+      - name: Setup Hugo
+        run: |
+            cd module3_task3
+            ./setup.sh
+
+      - name: build
+        run: |
+            cd module3_task3
+            make build
+
+      - name: test
+        run: |
+          cd module3_task3
+          make unit-tests
+          make integration-tests
+          make validate
+
+      - name: run
+        run: |
+          cd module3_task3
+          make run
+
+      - name: package
+        run: |
+          cd module3_task3
+          make package
+
+      - name: Read release notes
+        id: DEPLOY
+        run: |
+          echo "::set-output name=body::$(cat module3_task3/DEPLOY.md)"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          tag_name: 1.0.1
+          files: module3_task3/awesome-website.zip
+          body: ${{ steps.DEPLOY.outputs.body }}
+          token: ${{ secrets.RELEASETOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: lint
+        run: |
+          cd module3_task3
+          make lint
+
+      - name: clean
+        run: |
+          cd module3_task3
+          make clean
