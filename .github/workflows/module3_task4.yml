@@ -9,8 +9,8 @@ on:
   schedule:
     - cron: '0 0 * * *'
   pull_request:
-    types:
-      - opened
+    branches:
+      - master
 
 jobs:
   build:
