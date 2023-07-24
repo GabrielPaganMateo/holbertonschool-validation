@@ -85,13 +85,13 @@ jobs:
         with:
           publish-dir: './dist'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy preview from GitHub Actions for PR #${{ github.event.pull_request.number }}"
+          deploy-message: "#${{ github.event.pull_request.number }}"
           enable-pull-request-comment: true
           overwrites-pull-request-comment: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          
+
       - name: Deploy Production to Netlify
         if: github.ref == 'refs/heads/master'
         uses: nwtgck/actions-netlify@v2.0
