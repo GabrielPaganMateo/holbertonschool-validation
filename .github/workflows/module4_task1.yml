@@ -31,7 +31,7 @@ jobs:
       - name: Validate Makefile
         run: |
             cd module4_task1
-            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make help
+            docker run --rm -v ${{ github.workspace }}:/app -w /module4_task1 awesome:build make help
 
       - name: Setup Hugo
         run: |
