@@ -21,47 +21,47 @@ jobs:
 
       - name: Validate Makefile
         run: |
-            cd module3_task3
+            cd module3_task5
             make help
 
       - name: Setup Hugo
         run: |
-            cd module3_task3
+            cd module3_task5
             ./setup.sh
 
       - name: build
         run: |
-            cd module3_task3
+            cd module3_task5
             make build
 
       - name: test
         run: |
-          cd module3_task3
+          cd module3_task5
           make unit-tests
           make integration-tests
           make validate
 
       - name: run
         run: |
-          cd module3_task3
+          cd module3_task5
           make run
 
       - name: package
         run: |
-          cd module3_task3
+          cd module3_task5
           make package
 
       - name: Read release notes
         id: DEPLOY
         run: |
-          echo "::set-output name=body::$(cat module3_task3/DEPLOY.md)"
+          echo "::set-output name=body::$(cat module3_task5/DEPLOY.md)"
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           tag_name: 1.0.1
-          files: module3_task3/awesome-website.zip
+          files: module3_task5/awesome-website.zip
           body: ${{ steps.DEPLOY.outputs.body }}
           token: ${{ secrets.RELEASETOKEN }}
 
@@ -72,7 +72,7 @@ jobs:
 
       - name: lint
         run: |
-          cd module3_task3
+          cd module3_task5
           make lint
 
       - name: Deploy Preview to Netlify
@@ -102,4 +102,4 @@ jobs:
 
       - name: clean
         run: |
-          cd module3_task3
+          cd module3_task5
