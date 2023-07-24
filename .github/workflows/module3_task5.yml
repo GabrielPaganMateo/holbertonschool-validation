@@ -79,7 +79,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: './dist'
+          publish-dir: './module3_task5/dist'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "#${{ github.event.pull_request.number }}"
           enable-pull-request-comment: true
