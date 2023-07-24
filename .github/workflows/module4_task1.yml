@@ -31,42 +31,42 @@ jobs:
       - name: Validate Makefile
         run: |
             cd module4_task1
-            docker run --rm -v $(PWD):/app -w /app awesome:build make help
+            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make help
 
       - name: Setup Hugo
         run: |
             cd module4_task1
-            docker run --rm -v $(PWD):/app -w /app awesome:build make setup
+            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make setup
 
       - name: Build
         run: |
             cd module4_task1
-            docker run --rm -v $(PWD):/app -w /app awesome:build make build
+            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make build
 
       - name: Test
         run: |
             cd module4_task1
-            docker run --rm -v $(PWD):/app -w /app awesome:build make test
+            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make test
 
       - name: Run unit-tests
         run: |
             cd module4_task1
-            docker run --rm -v $(PWD):/app -w /app awesome:build make unit-tests
+            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make unit-tests
 
       - name: Run integration-tests
         run: |
             cd module4_task1
-            docker run --rm -v $(PWD):/app -w /app awesome:build make integration-tests
+            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make integration-tests
 
       - name: Run
         run: |
             cd module4_task1
-            docker run --rm -v $(PWD):/app -w /app awesome:build make run
+            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make run
 
       - name: Package
         run: |
             cd module4_task1
-            docker run --rm -v $(PWD):/app -w /app awesome:build make package
+            docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build make package
 
       - name: Read release notes
         id: DEPLOY
