@@ -20,8 +20,9 @@ lint: ## LINT MD
 	-markdownlint *.md
 
 go-build:
-	go get github.com/gorilla/mux
-	go build -o $(BINARY_NAME)
+	docker run -d golang:1.15.8-buster go get github.com/gorilla/mux && go build -o $(BINARY_NAME)
+	-go get github.com/gorilla/mux
+	-go build -o $(BINARY_NAME)
 
 hugo-build:
 	hugo
