@@ -33,10 +33,10 @@ build-docker: ## Build Docker image for development environment
 build: hugo-build go-build ## Generate the website from the markdown and configuration files in the directory dist/
 
 unit-tests: ## UNIT TEST UNIT TEST
-	docker run --rm -v $(PWD):/app -w /app $(DOCKER_IMAGE_NAME) go test -v -short -coverprofile=coverage-units.out
+	-go test -v -short -coverprofile=coverage-units.out
 
 integration-tests: ## " - integration-tests: Runs the Golang integration tests"
-	docker run --rm -v $(PWD):/app -w /app $(DOCKER_IMAGE_NAME) go test -v -coverprofile=coverage-integrations.out
+	-go test -v -coverprofile=coverage-integrations.out
 
 test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
