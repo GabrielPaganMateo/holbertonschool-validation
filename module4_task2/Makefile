@@ -1,4 +1,4 @@
-.PHONY: build clean post check stop unit-tests integration-tests test lint package
+.PHONY: build clean build-docker post check stop unit-tests integration-tests test lint package
 
 # Variables
 BINARY_NAME := awesome-api

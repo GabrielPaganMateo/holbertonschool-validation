@@ -61,7 +61,11 @@ To validate the style in index.html files of '/dist' directory, run:
 
 make validate
 
-This command uses a W3C validator via the command: python3 opt/W3C-Validator/w3c_validator.py 
+This command uses a W3C validator via the command: python3 opt/W3C-Validator/w3c_validator.py
+
+## build-docker
+
+Build docker image
 
 ### Help
 
