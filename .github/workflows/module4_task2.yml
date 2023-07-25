@@ -22,7 +22,11 @@ jobs:
       - name: Setup Docker
         run: |
             docker --version
+      - name: Set up Node.js
 
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
       - name: Build Docker Image
         run: |
             cd module4_task2
@@ -83,11 +87,6 @@ jobs:
           files: module4_task2/awesome-website.zip
           body: ${{ steps.DEPLOY.outputs.body }}
           token: ${{ secrets.RELEASETOKEN }}
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
 
       - name: lint
         run: |
