@@ -27,7 +27,7 @@ hugo-build:
 	docker run --rm -v $(PWD):/app -w /app $(DOCKER_IMAGE_NAME) hugo
 
 build-docker: ## Build Docker image for development environment
-	docker build -f .build/Dockerfile -t $(DOCKER_IMAGE_NAME) .
+	docker build -f .build/Dockerfile -t $(DOCKER_IMAGE_NAME) module4_task1/
 
 build: hugo-build go-build ## Generate the website from the markdown and configuration files in the directory dist/
 
