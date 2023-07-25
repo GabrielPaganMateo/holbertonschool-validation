@@ -38,6 +38,9 @@ unit-tests: ## UNIT TEST UNIT TEST
 integration-tests: ## " - integration-tests: Runs the Golang integration tests"
 	-go test -v -coverprofile=coverage-integrations.out
 
+docker-tests: ## Test docker image
+	hadolint docker
+
 test: unit-tests integration-tests validate ## WOOOHOOOOOOOO saljdfasldhfaksdf asdsafgasgasfasdf
 
 run: ## dslfjsaldjflkdsajfsajf;ljsadjf;lsajdfkldsaf sadfasdfasdfdsa
