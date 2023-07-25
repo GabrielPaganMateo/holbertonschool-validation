@@ -22,46 +22,47 @@ jobs:
       - name: Setup Docker
         run: |
             docker --version
-            
+
       - name: Build Docker Image
         run: |
             cd module4_task1
             make build-docker
-            
+
       - name: Validate Makefile
         run: |
             cd module4_task1
-            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build make help
+            docker run --rm -w /app/module4_task1 awesome:build make help
 
       - name: Build
         run: |
             cd module4_task1
-            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build make build
+            docker run --rm -w /app/module4_task1 awesome:build make build
 
       - name: Test
         run: |
             cd module4_task1
-            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build make test
+            docker run --rm -w /app/module4_task1 awesome:build make test
 
       - name: Run unit-tests
         run: |
             cd module4_task1
-            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build make unit-tests
+            docker run --rm -w /app/module4_task1 awesome:build make unit-tests
 
       - name: Run integration-tests
         run: |
             cd module4_task1
-            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build make integration-tests
+            docker run --rm -w /app/module4_task1 \
+            awesome:build make integration-tests
 
       - name: Run
         run: |
             cd module4_task1
-            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build make run
+            docker run --rm -w /app/module4_task1 awesome:build make run
 
       - name: Package
         run: |
             cd module4_task1
-            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build make package
+            docker run --rm -w /app/module4_task1 awesome:build make package
 
       - name: Read release notes
         id: DEPLOY
@@ -84,7 +85,7 @@ jobs:
 
       - name: lint
         run: |
-          cd module3_task5
+          cd module4_task1
           make lint
 
       - name: Deploy Preview to Netlify
