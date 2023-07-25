@@ -32,7 +32,8 @@ jobs:
         run: |
             cd module4_task1
             docker run --rm -v ${{ github.workspace }}:/app -w /app awesome:build bash -c 'ls -la'
-            docker run --rm -v ${{ github.workspace }}:/app -w /module4_task1 awesome:build make help
+            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build bash -c 'ls -la'
+            docker run --rm -v ${{ github.workspace }}:/app -w /app/module4_task1 awesome:build make help
 
 
       - name: Setup Hugo
