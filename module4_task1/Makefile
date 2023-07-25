@@ -24,7 +24,7 @@ go-build:
 	docker run --rm -v $(PWD):/app -w /app $(DOCKER_IMAGE_NAME) bash -c "go get github.com/gorilla/mux && go build -o $(BINARY_NAME)"
 
 hugo-build:
-	docker run --rm -v $(PWD):/app -w /app $(DOCKER_IMAGE_NAME) hugo
+	docker run --rm -v $(PWD):/app -w /app/module4_task1 $(DOCKER_IMAGE_NAME) hugo
 
 build-docker: ## Build Docker image for development environment
 	docker build -f .build/Dockerfile -t $(DOCKER_IMAGE_NAME) .
