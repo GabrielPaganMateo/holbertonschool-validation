@@ -27,7 +27,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install Node.js and npm
 RUN apt-get update && apt-get install -y --no-install-recommends \
     nodejs=14.* \
-    npm=6.*
+    npm=6.* \
+ && rm -rf /var/lib/apt/lists/*
 
 # Install markdownlint-cli
 RUN npm install -g markdownlint-cli@0.27.1
