@@ -24,7 +24,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  # DL3009: Delete the apt-get lists after installing something
  && rm -rf /var/lib/apt/lists/*
 
+# Install Node.js and npm
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    nodejs=14.* \
+    npm=6.*
+
+# Install markdownlint-cli
+RUN npm install -g markdownlint-cli@0.27.1
+
 # Install other dependencies here...
 COPY . /app
-
 
