@@ -11,3 +11,5 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 
 # Install other dependencies here...
 WORKDIR /app
+
+COPY module4_task1/ .
