@@ -18,6 +18,7 @@ lint_golang: ## LINT LINT LINT YEAHHHH BABYYYY
 
 lint: ## LINT MD
 	npm install -g markdownlint-cli
+	hadolint .build/Dockerfile
 	-markdownlint *.md
 
 go-build:

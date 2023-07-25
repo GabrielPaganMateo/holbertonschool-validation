@@ -1,0 +1,2 @@
+container-structure-test test --image ${{}}:latest \
+--config config.yaml
