@@ -104,7 +104,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: './module3_task5/dist'
+          publish-dir: './module4_task1/dist'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy production from GitHub Actions"
           production-branch: master
