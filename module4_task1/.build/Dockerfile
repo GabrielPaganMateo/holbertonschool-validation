@@ -10,5 +10,5 @@ RUN wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hug
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.40.1
 
 # Install other dependencies here...
-COPY module4_task1 /app
+COPY ./module4_task1/ /app
 WORKDIR /app
