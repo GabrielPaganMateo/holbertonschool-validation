@@ -21,18 +21,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb \
  && rm hugo_${HUGO_VERSION}_Linux-64bit.deb \
  && wget -q --progress=dot:giga -O- https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.40.1 \
+ && apt-get install -y --no-install-recommends nodejs=10.21.0~dfsg-1~deb10u1 \
+ && npm install -g markdownlint-cli@0.27.1 \
  # DL3009: Delete the apt-get lists after installing something
  && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js and npm
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    nodejs=14.* \
-    npm=6.* \
- && rm -rf /var/lib/apt/lists/*
-
-# Install markdownlint-cli
-RUN npm install -g markdownlint-cli@0.27.1
-
 # Install other dependencies here...
 COPY . /app
+
 
