@@ -32,6 +32,8 @@ build-docker: ## Build Docker image for development environment
 
 build: hugo-build go-build ## Generate the website from the markdown and configuration files in the directory dist/
 
+docker-tests: ## Test docker image
+
 unit-tests: ## UNIT TEST UNIT TEST
 	-go test -v -short -coverprofile=coverage-units.out
 
