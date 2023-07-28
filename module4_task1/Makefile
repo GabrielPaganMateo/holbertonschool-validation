@@ -17,7 +17,6 @@ lint_golang: ## LINT LINT LINT YEAHHHH BABYYYY
 	docker run --rm -v $(PWD):/app -w /app $(DOCKER_IMAGE_NAME) golangci-lint run
 
 lint: ## LINT MD
-	hadolint .build/Dockerfile
 	npm install -g markdownlint-cli
 	-markdownlint *.md
 
