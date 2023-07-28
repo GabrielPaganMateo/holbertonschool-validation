@@ -16,5 +16,7 @@ This project can be built, run, tested, and cleaned using the following commands
 - `integration-tests`: Runs the Golang integration tests
 - `make check`: Lint style and verify links in posts/*.md
 - `make validate`: Validate W3C style using validator
+- `make build-docker`: Build docker image
+- `make docker-tests`: Test docker image
 
 To see the full list of available commands, you can run the `make help` command. 
