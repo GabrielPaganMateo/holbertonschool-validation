@@ -1,5 +1,5 @@
 ---
-name: module4_task1
+name: module4_task2
 on:
   push:
     branches:
@@ -22,53 +22,57 @@ jobs:
       - name: Setup Docker
         run: |
             docker --version
+      - name: Set up Node.js
 
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
       - name: Build Docker Image
         run: |
-            cd module4_task1
+            cd module4_task2
             make build-docker
 
       - name: Validate Makefile
         run: |
-            cd module4_task1
+            cd module4_task2
             docker run --rm -v ${{ github.workspace }}:/app \
-            -w /app/module4_task1 awesome:build make help
+            -w /app/module4_task2 awesome:build make help
 
       - name: Build
         run: |
-            cd module4_task1
+            cd module4_task2
             docker run --rm -v ${{ github.workspace }}:/app \
-            -w /app/module4_task1 awesome:build make build
+            -w /app/module4_task2 awesome:build make build
 
       - name: Test
         run: |
-            cd module4_task1
+            cd module4_task2
             docker run --rm -v ${{ github.workspace }}:/app \
-            -w /app/module4_task1 awesome:build make test
+            -w /app/module4_task2 awesome:build make test
 
       - name: Run unit-tests
         run: |
-            cd module4_task1
+            cd module4_task2
             docker run --rm -v ${{ github.workspace }}:/app \
-            -w /app/module4_task1 awesome:build make unit-tests
+            -w /app/module4_task2 awesome:build make unit-tests
 
       - name: Run integration-tests
         run: |
-            cd module4_task1
+            cd module4_task2
             docker run --rm -v ${{ github.workspace }}:/app \
-            -w /app/module4_task1 awesome:build make integration-tests
+            -w /app/module4_task2 awesome:build make integration-tests
 
       - name: Run
         run: |
-            cd module4_task1
+            cd module4_task2
             docker run --rm -v ${{ github.workspace }}:/app \
-            -w /app/module4_task1 awesome:build make run
+            -w /app/module4_task2 awesome:build make run
 
       - name: Package
         run: |
-            cd module4_task1
+            cd module4_task2
             docker run --rm -v ${{ github.workspace }}:/app \
-            -w /app/module4_task1 awesome:build make package
+            -w /app/module4_task2 awesome:build make package
 
       - name: Read release notes
         id: DEPLOY
@@ -80,25 +84,20 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           tag_name: 1.0.1
-          files: module4_task1/awesome-website.zip
+          files: module4_task2/awesome-website.zip
           body: ${{ steps.DEPLOY.outputs.body }}
           token: ${{ secrets.RELEASETOKEN }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
       - name: lint
         run: |
-          cd module4_task1
+          cd module4_task2
           make lint
 
       - name: Deploy Preview to Netlify
         if: github.event_name == 'pull_request'
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: './module4_task1/dist'
+          publish-dir: './module4_task2/dist'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "#${{ github.event.pull_request.number }}"
           enable-pull-request-comment: true
@@ -111,7 +110,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: './module4_task1/dist'
+          publish-dir: './module4_task2/dist'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy production from GitHub Actions"
           production-branch: master
