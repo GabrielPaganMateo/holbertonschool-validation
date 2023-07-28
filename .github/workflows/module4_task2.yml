@@ -92,8 +92,8 @@ jobs:
       - name: lint
         run: |
           cd module4_task2
-            docker run --rm -v ${{ github.workspace }}:/app \
-            -w /app/module4_task2 awesome:build make lint
+          docker run --rm -v ${{ github.workspace }}:/app \
+          -w /app/module4_task2 awesome:build make lint
 
       - name: Deploy Preview to Netlify
         if: github.event_name == 'pull_request'
