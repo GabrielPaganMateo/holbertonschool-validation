@@ -17,7 +17,7 @@ lint_golang: ## LINT LINT LINT YEAHHHH BABYYYY
 	docker run --rm -v $(PWD):/app -w /app $(DOCKER_IMAGE_NAME) golangci-lint run
 
 lint: ## LINT MD
-
+	hadolint .build/Dockerfile
 
 go-build:
 	-go get github.com/gorilla/mux
